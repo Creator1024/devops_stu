@@ -1,0 +1,19 @@
+# ad-hoc setup module: 
+# ansible mj999 -m setup -a 'filter=ansible_memory_mb'
+# ansible mj999 -m setup -a 'filter=*mb*' 包含mb的信息
+# 远程主机默认自定义消息存放在 /etc/ansible/facts.d/
+---
+- hosts: mj999
+  gather_facts: no
+  remote_user: root
+  vars:
+    var1: var1_vaule
+  tasks:
+  - shell: "echo test var"
+    register: shell_return
+  - set_fact:
+      var2: "{{shell_return.stdout}}"
+      var3: "{{var1}}"
+  - debug:
+      msg: "{{play_hosts}} exec: {{var3}} ... {{var2}}"
+      

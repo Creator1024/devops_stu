@@ -1,0 +1,11 @@
+---
+- hosts: mj888,mj999
+  remote_user: root
+  tasks:
+  - name: Ping all
+    ping:
+  - name: mkdir directory
+    file:
+      path: /tmp/test/
+      state: directory
+

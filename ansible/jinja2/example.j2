@@ -1,0 +1,10 @@
+Example of template module loop with a list.
+{% for item in list1 %}
+    {{ item }}
+{% endfor %}
+
+Example:
+  {{ example | to_nice_yaml(indent=2) | indent(2)}}
+  
+# to_nice_yaml(indent=2) 表示example这个key的值里面有多级的话，缩进是多少。
+# indent(2)表示example这个key的值所有行对于开头的缩进（不包括第一行）

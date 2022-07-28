@@ -1,0 +1,3 @@
+nginx:
+  conf1: /tmp/test/nginx1.conf
+  conf2: /tmp/test/nginx2.conf

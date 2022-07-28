@@ -1,0 +1,19 @@
+Example of template module loop with a list.
+    var1
+    var2
+    var3
+    var4
+
+Example:
+  domain:
+    other:
+      child_other: somehing
+    something: email.example
+  host: smtp.example
+  pass: examplepass
+  port: 587
+  user: example
+
+  
+# to_nice_yaml(indent=4) 表示example这个key的值里面有多级的话，缩进是多少。
+# indent(6)表示example这个key的值所有行对于开头的缩进（不包括第一行）

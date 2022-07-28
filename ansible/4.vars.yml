@@ -1,0 +1,16 @@
+---
+- hosts: mj999
+  vars:
+    my_name: name
+    my_sex: male
+  vars_files:
+  - my_vars.yml
+  tasks:
+  - name: task1
+    debug:
+      msg: my name is {{my_name}}
+  - name: task2
+    debug:
+      # 如果该变量前没有其他内容，需要用引号扩起来
+      msg: "{{ my_sex }}"
+

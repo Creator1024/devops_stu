@@ -1,0 +1,67 @@
+# ---
+# - hosts: mj999
+#   gather_facts: no
+#   tasks:
+#   - debug: 
+#       msg: "{{item.test1}}"
+#     with_items:
+#     - {test1: a, test2: b}
+#     - {test1: c, test2: d}
+
+
+
+# - hosts: mj999
+#   gather_facts: no
+#   vars:
+#     dirs: ["/tmp/d1", "/tmp/d2", "/tmp/d3"]
+#   tasks:
+#   - file:
+#       path: "{{item}}"
+#       state: touch
+#     with_items: "{{dirs}}"
+  
+# jinja2 Test
+# - hosts: mj999
+#   gather_facts: no
+#   tasks:
+#   - shell: "{{item}}"
+#     with_items: ["ls /opt", "ls /tmp"]
+#     register: rtn_value
+  
+#   - debug:
+#       msg: "{{item.stdout}}"
+#     with_items: "{{rtn_value.results}}"
+
+# - hosts: mj999
+#   gather_facts: no
+#   tasks:
+#   - shell: "{{item}}"
+#     with_items: ["ls /opt", "ls /tmp"]
+#     register: rtn_value
+  
+#   - debug:
+#       msg: "
+#       {% for i in rtn_value.results %}
+#         {{i.stdout}}
+#       {% endfor %}
+#       "
+
+# with_together, with_list, with_flattened, with_cartesian
+    
+# - hosts: mj999
+#   gather_facts: no
+#   tasks:
+#   - debug:
+#       msg: "{{item}}"
+#     with_cartesian:
+#     - [1, 2, 3]
+#     - [a, b]
+
+- hosts: mj999
+  gather_facts: no
+  tasks:
+  - debug:
+      msg: "{{item}}"
+    with_indexed_items:
+    - [1, [2, 3]]
+    - [a, b]

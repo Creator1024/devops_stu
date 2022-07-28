@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+    name: myapp
+    namespace: default
+spec:
+    replicas: 2
+    selector: 
+        matchLabels:
+            app: myapp
+            release: canary
+    template:
+        metadata:
+            name: myapp-pod
+            labels:
+                app: myapp
+                release: canary
+                env: qa
+        spec:
+            containers:
+            - name: myapp-container
+              image: creator1024/echoserver:1.4
+              ports:
+              - name: http
+                containerPort: 80
+

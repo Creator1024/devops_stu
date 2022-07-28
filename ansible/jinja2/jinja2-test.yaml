@@ -1,0 +1,31 @@
+---
+- hosts: localhost
+  gather_facts: false
+  become: false
+  connection: local
+  vars:
+    list1: ['var1','var2','var3', 'var4']
+    example:
+      host: smtp.example
+      port: 587
+      user: example
+      pass: examplepass
+      domain:
+        something: email.example
+        other: 
+          child_other: somehing
+  tasks:
+    - name: Template Loop example.
+      template:
+        # src and dest both in $pwd that where test-jinja2.yaml exists
+        src: example.j2
+        dest: output.txt
+    
+    # - name: Template with_items example.
+    #   template:
+    #     src: "{{ item.src }}"
+    #     dest: "{{ item.dest }}"
+    #   with_items:
+    #     - {src: 'example.j2',dest: 'output1.txt'}
+    #     - {src: 'example.j2',dest: 'output2.txt'}
+    #     - {src: 'example.j2',dest: 'output3.txt'}

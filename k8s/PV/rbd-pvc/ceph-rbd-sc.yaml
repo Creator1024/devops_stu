@@ -1,0 +1,14 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: k8s-test-ww
+provisioner: ceph.com/rbd
+parameters:
+  monitors: 10.120.10.11,10.120.10.12,10.120.10.13
+  pool: k8s-test-ww
+  adminId: k8s-test-admin-ww
+  adminSecretNamespace: kube-system
+  adminSecretName: k8s-ceph-secret-admin
+  userId: k8s-test-user-ww
+  userSecretName: k8s-ceph-secret-user
+  imageFormat: "2"
