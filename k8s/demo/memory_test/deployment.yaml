@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memory-test
+  namespace: default
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: memory-test
+  template:
+    metadata:
+      labels:
+        app: memory-test
+    spec:
+      containers:
+        - env:
+          - name: Ticker
+            value: "1"
+          name: memory-test
+          image: registry.cn-hangzhou.aliyuncs.com/creator1024/demo:memory_test_v1
+          ports:
+            - name: http
+              containerPort: 8000
+          resources:
+            limits:
+              cpu: 100m
+              memory: 100Mi
+      nodeSelector:
+        public_business: group
